@@ -34,6 +34,10 @@ module OmniAuth
           deep_symbolize(options.client_options).merge(site: site)
         )
       end
+      
+      def callback_url
+        full_host + script_name + callback_path
+      end
 
       private
 
