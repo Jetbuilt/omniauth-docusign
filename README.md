@@ -1,6 +1,7 @@
 # OmniAuth DocuSign
 
 ![Gem](https://img.shields.io/gem/v/omniauth-docusign.svg)
+![CI](https://img.shields.io/github/actions/workflow/status/Jetbuilt/omniauth-docusign/ci.yml?branch=main)
 
 This is an unofficial OmniAuth strategy for authenticating to DocuSign. To get started, sign up
 for a DocuSign sandbox account.
