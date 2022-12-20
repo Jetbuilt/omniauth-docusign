@@ -1,15 +1,27 @@
-AllCops:
-  TargetRubyVersion: 2.2
+require:
+  - rubocop-performance
+  - rubocop-rake
+  - rubocop-rspec
 
-Metrics/LineLength:
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 2.7
+
+Layout/LineLength:
   Max: 100
+
+Naming/FileName:
+  Exclude:
+    - 'lib/omniauth-docusign.rb'
+
+RSpec/FilePath:
+  Enabled: false
+  # This should work, but explodes
+  # CustomTransform:
+  #   - OmniAuth: "omniauth"
 
 Style/Documentation:
   Enabled: false
-
-Style/FileName:
-  Exclude:
-    - 'lib/omniauth-docusign.rb'
 
 Style/RegexpLiteral:
   Exclude:

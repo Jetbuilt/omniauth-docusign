@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe OmniAuth::Strategies::DocuSign do
-  it 'should do some testing' do
-    pending
+  it 'does something' do
+    pending 'putting effort into testing'
   end
 end

@@ -1,23 +1,25 @@
+# frozen_string_literal: true
+
 require 'omniauth-oauth2'
 
 module OmniAuth
   module Strategies
     class DocuSign < OmniAuth::Strategies::OAuth2
-      SANDBOX_URL = 'https://account-d.docusign.com'.freeze
-      PRODUCTION_URL = 'https://account.docusign.com'.freeze
+      SANDBOX_URL = 'https://account-d.docusign.com'
+      PRODUCTION_URL = 'https://account.docusign.com'
 
       option :client_options, {
-        authorize_url: "/oauth/auth",
-        token_url:     "/oauth/token"
+        authorize_url: '/oauth/auth',
+        token_url: '/oauth/token'
       }
 
       uid { user_info['accounts'].first['account_id'] }
 
       info do
         {
-          'uid'      => user_info['accounts'].first['account_id'],
-          'name'     => user_info['name'],
-          'email'    => user_info['email'],
+          'uid' => user_info['accounts'].first['account_id'],
+          'name' => user_info['name'],
+          'email' => user_info['email'],
           'base_uri' => user_info['accounts'].first['base_uri']
         }
       end
@@ -34,7 +36,7 @@ module OmniAuth
           deep_symbolize(options.client_options).merge(site: site)
         )
       end
-      
+
       def callback_url
         full_host + script_name + callback_path
       end
@@ -48,18 +50,20 @@ module OmniAuth
       def user_info
         return @user_info if @user_info
 
-        conn = Faraday.new(url: site) do |faraday|
-          faraday.request  :url_encoded
-          faraday.adapter  Faraday.default_adapter
-        end
-
-        response = conn.get do |req|
+        response = faraday_client.get do |req|
           req.url '/oauth/userinfo'
           req.headers['Content-Type'] = 'application/json'
           req.headers['Authorization'] = "Bearer #{access_token.token}"
         end
 
         @user_info = MultiJson.decode(response.body)
+      end
+
+      def faraday_client
+        Faraday.new(url: site) do |faraday|
+          faraday.request  :url_encoded
+          faraday.adapter  Faraday.default_adapter
+        end
       end
     end
   end
