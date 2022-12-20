@@ -1,5 +1,7 @@
 # OmniAuth DocuSign
 
+![Gem](https://img.shields.io/gem/v/omniauth-docusign.svg)
+
 This is an unofficial OmniAuth strategy for authenticating to DocuSign. To get started, sign up
 for a DocuSign sandbox account.
 
