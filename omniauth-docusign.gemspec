@@ -16,6 +16,7 @@ Gem::Specification.new do |gem|
   gem.name          = 'omniauth-docusign'
   gem.require_paths = ['lib']
   gem.version       = OmniAuth::DocuSign::VERSION
+  gem.required_ruby_version = '>= 2.7.0'
 
   gem.add_dependency 'omniauth', '~> 1.0'
   gem.add_dependency 'omniauth-oauth2', '~> 1.0'
