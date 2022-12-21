@@ -19,6 +19,7 @@ Gem::Specification.new do |gem|
   gem.metadata['rubygems_mfa_required'] = 'true'
 
   gem.add_dependency 'omniauth-oauth2', '~> 1.0'
+
   gem.add_development_dependency 'rack-test'
   gem.add_development_dependency 'rake', '~> 13.0'
   gem.add_development_dependency 'rspec', '~> 3.12'
