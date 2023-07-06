@@ -1,7 +1,9 @@
 *.gem
 *.rbc
+.DS_Store
 .bundle
 .config
+.ruby-version
 .yardoc
 Gemfile.lock
 InstalledFiles
